@@ -2400,8 +2400,6 @@ static int ft5435_ts_resume(struct device *dev)
 	struct ft5435_ts_data *data = g_ft5435_ts_data;
 	int i = 0;
 
-
-
 	if (!data->suspended) {
 		dev_dbg(dev, "Already in awake state\n");
 		return 0;
@@ -2418,6 +2416,11 @@ static int ft5435_ts_resume(struct device *dev)
 	input_mt_report_pointer_emulation(data->input_dev, false);
 	input_sync(data->input_dev);
     mutex_unlock(&data->report_mutex);
+
+#if defined(FOCALTECH_TP_GESTURE)
+	if (gesture_func_on)
+		disable_irq(data->client->irq);
+#endif
 
 	/* release all touches */
 
