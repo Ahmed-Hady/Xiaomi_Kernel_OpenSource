@@ -169,15 +169,7 @@ config CPU_FREQ_DEFAULT_GOV_ALUCARD
 	bool "alucard"
 	select CPU_FREQ_GOV_ALUCARD
 	help
-<<<<<<< HEAD
-=======
-	
-config CPU_FREQ_DEFAULT_GOV_BLU_ACTIVE
-	bool "blu_active"
-	select CPU_FREQ_GOV_BLU_ACTIVE
-	help
-	  Use the CPUFreq governor 'blu_active' as default. This allows
-	  
+
 config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
         bool "zzmoove"
  	select CPU_FREQ_GOV_ZZMOOVE
@@ -186,7 +178,6 @@ config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
  	Use the CPUFreq governor 'zzmoove' as default, using predefined
  	frequency lookup tables and optimized scaling triggers instead of
  	% frequency steps to get smooth up/downscaling dependant on CPU load.
->>>>>>> 17bd18b55d62... cpufreq: Add zzmoove governor
 
 endchoice
 
