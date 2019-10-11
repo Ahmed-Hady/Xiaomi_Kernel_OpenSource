@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -2139,8 +2139,12 @@ static bool i2c_msm_xfer_next_buf(struct i2c_msm_ctrl *ctrl)
 {
 	struct i2c_msm_xfer_buf *cur_buf = &ctrl->xfer.cur_buf;
 	struct i2c_msg          *cur_msg = ctrl->xfer.msgs + cur_buf->msg_idx;
-	int bc_rem = cur_msg->len - cur_buf->end_idx;
+	int bc_rem = 0;
 
+	if (!cur_msg)
+		return false;
+
+	bc_rem = cur_msg->len - cur_buf->end_idx;
 	if (cur_buf->is_init && cur_buf->end_idx && bc_rem) {
 		/* not the first buffer in a message */
 
